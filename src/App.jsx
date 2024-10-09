@@ -1,6 +1,7 @@
-
-import './App.css'
+import { Route, Routes } from "react-router-dom";
+import './App.scss'
 import Categories from './components/categories/Categories'
+import Navigation from "./components/navigation/Navigation";
 
 function App() {
   const categories = [
@@ -33,7 +34,10 @@ function App() {
 
   return (
     <>
-      <Categories categories={categories} />
+    {location.pathname !== "/signInUp" && <Navigation />}
+    <Routes>
+    <Route exact path="/" element={<Categories categories={categories} />} />
+    </Routes>
     </>
   )
 }

@@ -1,23 +1,24 @@
-import './categoty-item.styles.scss'
+import "./categoty-item.styles.scss";
 // import PropTypes from 'prop-types';
 
-const CategoryItem = ({category}) => {
-  const {title, imageUrl} = category;
+const CategoryItem = ({ category }) => {
+  const { title, imageUrl } = category;
   return (
     <div className="category-container">
-          <div
-            className="background-image"
-            style={{
-              backgroundImage: `url(${imageUrl})`,
-            }}
-          ></div>
-          <div className="category-body-container">
-            <h2>{title}</h2>
-            <p>Shop Now</p>
-          </div>
-        </div>
-  )
-}
+      <div
+        className="background-image"
+        style={{
+          backgroundImage: `url(${imageUrl})`,
+        }}
+      >
+      </div>
+      <div className="category-body-container">
+        <h2>{title}</h2>
+        <p>Shop Now</p>
+      </div>
+    </div>
+  );
+};
 
 // CategoryItem.propTypes = {
 //   category: PropTypes.shape({
@@ -26,4 +27,4 @@ const CategoryItem = ({category}) => {
 //   }).isRequired,
 // };
 
-export default CategoryItem
+export default CategoryItem;
