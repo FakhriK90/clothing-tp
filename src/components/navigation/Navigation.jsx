@@ -1,15 +1,32 @@
 import "./navigation.styles.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {Link} from "react-router-dom"
 
 
 const Navigation = () => {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      if (offset > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
     const [click, setClick] = useState(false);
 
     const handleClick = () => setClick(!click);
     const closeMobileMenu = () => setClick(false);
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
     <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
       <div className="title-logo">
         <span>Crawn Clothing</span>
@@ -22,7 +39,7 @@ const Navigation = () => {
       <ul className={click ? "nav-menu active" : "nav-menu"}>
         <li className="nav-item">
           <Link
-            to="/signin"
+            to="/signInUp"
             className="nav-links"
             onClick={closeMobileMenu}
           >
@@ -40,6 +57,7 @@ const Navigation = () => {
         </li>
         <li className="nav-item">
           <Link className="nav-links" onClick={closeMobileMenu}>
+          
             <div id="contain">
               <ul>
                 <li className="category">

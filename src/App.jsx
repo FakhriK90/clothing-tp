@@ -1,9 +1,12 @@
-import { Route, Routes } from "react-router-dom";
-import './App.scss'
-import Categories from './components/categories/Categories'
+import { Route, Routes, useLocation } from "react-router-dom";
+import "./App.scss";
+import Categories from "./components/categories/Categories";
 import Navigation from "./components/navigation/Navigation";
+import SignInUp from "./components/signInUP/SignInUp";
+import Footer from "./components/footer/Footer";
 
 function App() {
+  const location = useLocation();
   const categories = [
     {
       id: 1,
@@ -34,12 +37,18 @@ function App() {
 
   return (
     <>
-    {location.pathname !== "/signInUp" && <Navigation />}
-    <Routes>
-    <Route exact path="/" element={<Categories categories={categories} />} />
-    </Routes>
+      {location.pathname !== "/signInUp" && <Navigation />}
+      <Routes>
+        <Route
+          exact
+          path="/"
+          element={<Categories categories={categories} />}
+        />
+        <Route exact path="/signInUp" element={<SignInUp />} />
+      </Routes>
+      {location.pathname !== "/signInUp" && <Footer />}
     </>
-  )
+  );
 }
 
-export default App
+export default App;
