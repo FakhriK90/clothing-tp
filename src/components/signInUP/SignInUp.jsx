@@ -1,7 +1,7 @@
 import "./signInUp.styles.scss";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { signInWithGoogleAPop } from "../../utils/firebase/Firebase.utils";
+import { createUserDocumentFromAuth, signInWithGoogleAPopup,  } from "../../utils/firebase/Firebase.utils";
 
 const SignInUp = () => {
     const [signIn, setSignIn] = useState(true);
@@ -11,8 +11,9 @@ const SignInUp = () => {
     };
 
     const logGoogleUser = async () => {
-      const response = await signInWithGoogleAPop();
-      console.log(response);
+      const {user} = await signInWithGoogleAPopup();
+      // 
+    const userDocRef = await  createUserDocumentFromAuth(user);
     }
   return (
     <div
@@ -31,7 +32,7 @@ const SignInUp = () => {
                       <ion-icon name="mail"></ion-icon>
                     </span>
                     <div className="input-wrapper">
-                      <input type="email" id="email" required />
+                      <input type="email" required />
                       <label htmlFor="email">Email</label>
                     </div>
                   </div>
@@ -40,7 +41,7 @@ const SignInUp = () => {
                       <ion-icon name="lock-closed"></ion-icon>
                     </span>
                     <div className="input-wrapper">
-                      <input type="password" id="password" required />
+                      <input type="password" required />
                       <label htmlFor="password">Password</label>
                     </div>
                   </div>
@@ -70,7 +71,7 @@ const SignInUp = () => {
                       <ion-icon name="mail"></ion-icon>
                     </span>
                     <div className="input-wrapper">
-                      <input type="email" id="email" required />
+                      <input type="email" required />
                       <label htmlFor="email">Email</label>
                     </div>
                   </div>
@@ -79,12 +80,12 @@ const SignInUp = () => {
                       <ion-icon name="lock-closed"></ion-icon>
                     </span>
                     <div className="input-wrapper">
-                      <input type="password" id="password" required />
+                      <input type="password" required />
                       <label htmlFor="password">Password</label>
                     </div>
                   </div>
                   <div className="btn-submit">
-                    <button type="submit">Register</button>
+                    <button type="submit">Sign in</button>
                     <div className="register-link">
                       <span>Don&apos;t have an account? </span>
                       <b onClick={toggle} className="pointer">

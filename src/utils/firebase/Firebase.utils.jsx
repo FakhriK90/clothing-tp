@@ -30,32 +30,26 @@ provider.setCustomParameters({
 })
 
 export const auth = getAuth();
-export const signInWithGoogleAPop = () => signInWithPopup(auth, provider);
+export const signInWithGoogleAPopup = () => signInWithPopup(auth, provider);
 export const db = getFirestore();
 
 export const createUserDocumentFromAuth = async (userAuth) => {
-  // if (!userAuth) {
-  //   return;
-  // }
+  const userDocRef = doc(db, "users", userAuth.uid);
+  
+  const userSnapshot = await getDoc(userDocRef);
 
-  const userRef = doc(db, "users", userAuth.uid);
-  console.log(userAuth);
-  // const snapShot = await getDoc(userRef);
-
-  // if (!snapShot.exists()) {
-  //   const { displayName, email } = userAuth;
-  //   const createdAt = new Date();
-
-  //   try {
-  //     await setDoc(userRef, {
-  //       displayName,
-  //       email,
-  //       createdAt,
-  //     });
-  //   } catch (error) {
-  //     console.log("Error creating user", error.message);
-  //   }
-  // }
-
-  return userRef;
+  if (!userSnapshot.exists()) {
+    const { displayName, email } = userAuth;
+    const createdAt = new Date();
+    try {
+      await setDoc(userDocRef, {
+        displayName,
+        email,
+        createdAt,
+      });
+    } catch (error) {
+      console.log("Error creating user", error.message);
+    }
+  }
+  return userDocRef;
 }
