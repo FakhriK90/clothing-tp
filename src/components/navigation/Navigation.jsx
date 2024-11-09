@@ -1,9 +1,12 @@
 import "./navigation.styles.scss";
-import { useEffect, useState } from "react";
-import {Link} from "react-router-dom"
+import { useEffect, useState, useContext } from "react";
+import {Link} from "react-router-dom";
+import {UserContext} from "../../contexts/user.context"
 
 
 const Navigation = () => {
+  const {currentUser} = useContext(UserContext);
+  console.log(currentUser);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -61,7 +64,13 @@ const Navigation = () => {
             <div id="contain">
               <ul>
                 <li className="category">
+                <Link
+            to="/products"
+            className="nav-links"
+            onClick={closeMobileMenu}
+          >
                   <h3 id="title">Products</h3>
+          </Link>
                   <ul>
                     <li>
                       <Link to="/Hhats">Hats</Link>

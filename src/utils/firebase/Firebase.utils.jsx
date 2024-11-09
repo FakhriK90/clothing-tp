@@ -80,8 +80,7 @@ export const signInWithEmailPassword = async (email, password) => {
   }
 
   try {
-    const userCredential = await signInWithEmailAndPassword(auth, email, password);
-    return userCredential.user;
+    return await signInWithEmailAndPassword(auth, email, password);
   } catch (error) {
     console.error('Error signing in with email and password', error);
   }
