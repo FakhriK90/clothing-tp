@@ -37,19 +37,19 @@ function App() {
   ];
 
   return (
-    <div>
-      {location.pathname !== "/signInUp" && location.pathname !== "/register" && <Navigation />}
+    <>
+      {location.pathname !== "/signUp" && location.pathname !== "/signIn" && <Navigation />}
       <Routes>
         <Route
           exact
           path="/"
           element={<Categories categories={categories} />}
         />
-        <Route exact path="/register" element={<Register />} />
+        <Route exact path="/signUp" element={<Register />} />
         <Route exact path="/signIn" element={<SignIn />} />
       </Routes>
-      {location.pathname !== "/signInUp" && location.pathname !== "/register" && <Footer />}
-    </div>
+      {location.pathname !== "/signUp" && location.pathname !== "/signIn" && <Footer />}
+    </>
   );
 }
 

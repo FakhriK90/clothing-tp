@@ -5,7 +5,8 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
+  signOut,
 } from "firebase/auth";
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 
@@ -87,5 +88,14 @@ export const signInWithEmailPassword = async (email, password) => {
       console.error('Invalid credentials provided.');
     }
     throw error; // Rejeter l'erreur pour qu'elle puisse être capturée dans handleSubmitSignIn
+  }
+};
+
+export const signOutUser = async () => {
+  try {
+    return await signOut(auth);
+  } catch (error) {
+    console.error('Error signing out', error);
+    throw error;
   }
 };

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import { useState, useContext, useEffect } from "react";
 import { CssVarsProvider, extendTheme, useColorScheme } from '@mui/joy/styles';
 import GlobalStyles from '@mui/joy/GlobalStyles';
@@ -60,6 +60,7 @@ const SignIn = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const {setCurrentUser} = useContext(UserContext);
+    const navigate = useNavigate();
   
     const resetFields = () => {
       setEmail('');
@@ -73,6 +74,7 @@ const SignIn = () => {
     await createUserDocumentFromAuth(user);
     alert("User signed in with Google");
     console.log("User signed in with Google:", user);
+    navigate('/');
   };
 
     /* Sign in with email and password */
@@ -91,6 +93,7 @@ const SignIn = () => {
             console.log('User signed in:', userCredential.user);
             setCurrentUser(userCredential.user);
             resetFields();
+            navigate('/');
           }
         } catch (error) {
           if (error.code === "auth/user-not-found") {
@@ -187,7 +190,7 @@ const SignIn = () => {
                 </Typography>
                 <Typography level="body-sm">
                   New to company?{' '}
-                  <Link href="#replace-with-a-link" level="title-sm">
+                  <Link to="/signUp" level="title-sm">
                     Sign up!
                   </Link>
                 </Typography>
@@ -236,11 +239,9 @@ const SignIn = () => {
                       Forgot your password?
                     </Link>
                   </Box>
-                  <Link to="/">
                   <Button type="submit" fullWidth>
                     Sign in
                   </Button>
-                  </Link>
                 </Stack>
               </form>
             </Stack>

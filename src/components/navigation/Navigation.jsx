@@ -2,11 +2,14 @@ import "./navigation.styles.scss";
 import { useEffect, useState, useContext } from "react";
 import {Link} from "react-router-dom";
 import {UserContext} from "../../contexts/user.context"
+import {signOutUser} from "../../utils/firebase/Firebase.utils"
 
 
 const Navigation = () => {
-  const {currentUser} = useContext(UserContext);
+  const {currentUser, setCurrentUser} = useContext(UserContext);
   console.log(currentUser);
+
+  /* Setting scroll method */
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -28,6 +31,18 @@ const Navigation = () => {
 
     const handleClick = () => setClick(!click);
     const closeMobileMenu = () => setClick(false);
+
+    const signOutHandler = async() => {
+      await signOutUser();
+      setCurrentUser(null);
+    };
+
+    const handleSignOutClick = () => {
+      closeMobileMenu();
+      signOutHandler();
+    };
+
+
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
     <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
@@ -45,7 +60,7 @@ const Navigation = () => {
           <Link
             to="/"
             className="nav-links"
-            onClick={closeMobileMenu}
+            onClick={handleSignOutClick}
           >
             Sign Out
           </Link>
