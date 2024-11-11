@@ -83,5 +83,9 @@ export const signInWithEmailPassword = async (email, password) => {
     return await signInWithEmailAndPassword(auth, email, password);
   } catch (error) {
     console.error('Error signing in with email and password', error);
+    if (error.code === 'auth/invalid-credential') {
+      console.error('Invalid credentials provided.');
+    }
+    throw error; // Rejeter l'erreur pour qu'elle puisse être capturée dans handleSubmitSignIn
   }
 };

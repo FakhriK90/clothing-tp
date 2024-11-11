@@ -1,13 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Playpen+Sans&display=swap");
 
-:root {
-  --primary-color:#4ea685;
-  --secondary-color:#57b894;
-  --black:#000000;
-  --white:#ffffff;
-  --gray:#efefef;
-  --gray-2:#757575;
-}
+// :root {
+//   --white:#ffffff;
+//   --gray:#efefef;
+//   --gray-2:#757575;
+// }
 
 .containerSignInUp {
   position: relative;
@@ -38,7 +35,7 @@
 }
 
 .col {
-  width: 50%;
+  width: 100%;
 }
 
 .align-items-center {
@@ -50,8 +47,8 @@
 
 .login-box {
   position: relative;
-  width: 360px;
-  height: 440px;
+  width: 400px;
+  height: 500px;
   background: transparent;
   border: 2px solid rgba(255, 255, 255, 0.5);
   border-radius: 20px;
@@ -149,17 +146,7 @@
   font-weight: bold;
 }
 
-.containerSignInUp {
-  &.sign-in {
-    .form.sign-in, .containerSignInUp.sign-in > div {
-      transform: scale(1);
-    }
-  }
 
-  &.sign-up .form.sign-up > div {
-    transform: scale(1);
-  }
-}
 
 .content-row {
   position: absolute;
@@ -187,77 +174,6 @@
     transition-delay: 0.2s;
   }
 
-  &.sign-in {
-    h2, p {
-      transform: translateX(-250%);
-    }
-  }
-}
-
-.img.sign-in img {
-  transform: translateX(-250%);
-}
-
-.text.sign-up {
-  h2, p {
-    transform: translateX(250%);
-  }
-}
-
-.img.sign-up img {
-  transform: translateX(20%);
-}
-
-.containerSignInUp {
-  &.sign-in {
-    .text.sign-in {
-      h2, p {
-        transform: translateX(0);
-      }
-    }
-
-    .img.sign-in img {
-      transform: translateX(0);
-    }
-  }
-
-  &.sign-up {
-    .text.sign-up {
-      h2, p {
-        transform: translateX(0);
-      }
-    }
-
-    .img.sign-up img {
-      transform: translateX(0);
-    }
-  }
-
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 100vh;
-    width: 300vw;
-    transform: translate(35%, 0);
-    background-image: linear-gradient(-45deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-    transition: 1s ease-in-out;
-    z-index: 6;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    border-bottom-right-radius: max(60vw, 50vh);
-    border-top-left-radius: max(55vw, 50vh);
-  }
-
-  &.sign-in::before {
-    transform: translate(0, 0);
-    right: 45%;
-  }
-
-  &.sign-up::before {
-    transform: translate(100%, 0);
-    right: 55%;
-  }
 }
 
 /* Sign in with other methodes */
@@ -308,25 +224,10 @@
 }
 
 
-/* BACKGROUND */
 
 /* RESPONSIVE */
 
 @media only screen and (max-width: 425px) {
-  .containerSignInUp {
-    &::before, &.sign-in::before, &.sign-up::before {
-      height: 100vh;
-      border-bottom-right-radius: 0;
-      border-top-left-radius: 0;
-      z-index: 0;
-      transform: none;
-      right: 0;
-    }
-
-    &.sign-in .col.sign-in, &.sign-up .col.sign-up {
-      transform: translateY(0);
-    }
-  }
 
   @media (max-width: 360px) {
     .login-box {

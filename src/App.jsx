@@ -2,8 +2,9 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import "./App.scss";
 import Categories from "./components/categories/Categories";
 import Navigation from "./components/navigation/Navigation";
-import SignInUp from "./components/signInUP/SignInUp";
+import Register from "./components/signInUP/SignInUp";
 import Footer from "./components/footer/Footer";
+import SignIn from "./components/signInUP/SignIn";
 
 function App() {
   const location = useLocation();
@@ -36,18 +37,19 @@ function App() {
   ];
 
   return (
-    <>
-      {location.pathname !== "/signInUp" && <Navigation />}
+    <div>
+      {location.pathname !== "/signInUp" && location.pathname !== "/register" && <Navigation />}
       <Routes>
         <Route
           exact
           path="/"
           element={<Categories categories={categories} />}
         />
-        <Route exact path="/signInUp" element={<SignInUp />} />
+        <Route exact path="/register" element={<Register />} />
+        <Route exact path="/signIn" element={<SignIn />} />
       </Routes>
-      {location.pathname !== "/signInUp" && <Footer />}
-    </>
+      {location.pathname !== "/signInUp" && location.pathname !== "/register" && <Footer />}
+    </div>
   );
 }
 

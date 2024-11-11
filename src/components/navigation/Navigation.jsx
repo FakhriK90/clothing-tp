@@ -40,15 +40,28 @@ const Navigation = () => {
         <i className={click ? "fas fa-times" : "fas fa-bars"} />
       </div>
       <ul className={click ? "nav-menu active" : "nav-menu"}>
+      {currentUser ? (
         <li className="nav-item">
           <Link
-            to="/signInUp"
+            to="/"
+            className="nav-links"
+            onClick={closeMobileMenu}
+          >
+            Sign Out
+          </Link>
+        </li>
+          ) : (
+            <li className="nav-item">
+          <Link
+            to="/signIn"
             className="nav-links"
             onClick={closeMobileMenu}
           >
             Login
           </Link>
         </li>
+          )}
+        
         <li className="nav-item">
           <Link
             to="/services"
