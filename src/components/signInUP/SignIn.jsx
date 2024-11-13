@@ -1,5 +1,5 @@
 import { Link,useNavigate } from "react-router-dom";
-import { useState, useContext, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { CssVarsProvider, extendTheme, useColorScheme } from '@mui/joy/styles';
 import GlobalStyles from '@mui/joy/GlobalStyles';
 import CssBaseline from '@mui/joy/CssBaseline';
@@ -19,11 +19,9 @@ import BadgeRoundedIcon from '@mui/icons-material/BadgeRounded';
 import GoogleIcon from './GoogleIcon';
 import PropTypes from 'prop-types';
 import {
-    createUserDocumentFromAuth,
     signInWithGoogleAPopup,
     signInWithEmailPassword,
   } from "../../utils/firebase/Firebase.utils";
-  import { UserContext } from "../../contexts/user.context"
 
 function ColorSchemeToggle(props) {
   const { onClick, ...other } = props;
@@ -59,7 +57,6 @@ const SignIn = () => {
     /* Déclarations*/
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const {setCurrentUser} = useContext(UserContext);
     const navigate = useNavigate();
   
     const resetFields = () => {
@@ -69,11 +66,8 @@ const SignIn = () => {
 
       /* Google sign in*/
   const logGoogleUser = async () => {
-    const { user } = await signInWithGoogleAPopup();
-    //
-    await createUserDocumentFromAuth(user);
+    await signInWithGoogleAPopup();
     alert("User signed in with Google");
-    console.log("User signed in with Google:", user);
     navigate('/');
   };
 
@@ -91,7 +85,6 @@ const SignIn = () => {
           if (userCredential) {
             alert('User signed in');
             console.log('User signed in:', userCredential.user);
-            setCurrentUser(userCredential.user);
             resetFields();
             navigate('/');
           }

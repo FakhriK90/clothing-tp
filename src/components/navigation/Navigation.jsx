@@ -6,8 +6,7 @@ import {signOutUser} from "../../utils/firebase/Firebase.utils"
 
 
 const Navigation = () => {
-  const {currentUser, setCurrentUser} = useContext(UserContext);
-  console.log(currentUser);
+  const {currentUser} = useContext(UserContext);
 
   /* Setting scroll method */
   const [scrolled, setScrolled] = useState(false);
@@ -34,7 +33,6 @@ const Navigation = () => {
 
     const signOutHandler = async() => {
       await signOutUser();
-      setCurrentUser(null);
     };
 
     const handleSignOutClick = () => {
