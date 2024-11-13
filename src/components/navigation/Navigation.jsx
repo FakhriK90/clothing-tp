@@ -85,14 +85,14 @@ const Navigation = () => {
           </Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-links" onClick={closeMobileMenu}>
+          <Link className="nav-links">
           
             <div id="contain">
               <ul>
                 <li className="category">
                 <Link
             to="/products"
-            className="nav-links"
+            className="nav-links no-plus"
             onClick={closeMobileMenu}
           >
                   <h3 id="title">Products</h3>

@@ -25,9 +25,6 @@ $background-color_2: transparent;
 	.nav-links {
 		color: $color_1;
 	}
-	#title {
-		color: $color_1;
-	}
 }
 .navbar-container {
 	display: flex;
@@ -87,12 +84,7 @@ $background-color_2: transparent;
 	width: 100%;
 }
 
-h3 {
-  display: block;
-  color: #000000;
-  font-size: 15px;
-  line-height: 40px;
-}
+
 
 #contain {
 	ul {
@@ -108,8 +100,8 @@ h3 {
 		ul {
 			display: none;
 			position: absolute;
-			top: 40px;
-			left: -100%;
+			top: 50px;
+			left: -50%;
 			li {
         background-color: $background-color_1;
 				width: 197px;
@@ -119,8 +111,8 @@ h3 {
 				ul {
 					li {
 						position: relative;
-						top: -40px;
-						right: -5%;
+						top: -50px;
+						right: 50%;
 					}
 				}
 			}
@@ -148,6 +140,12 @@ li {
 		}
 	}
 }
+
+.no-plus::after {
+	content: none;
+  }
+
+
 @media screen and (max-width: 960px) {
 	.navbar-logo {
 		color: $color_2;
