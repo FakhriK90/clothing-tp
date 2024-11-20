@@ -53,6 +53,18 @@ const Navigation = () => {
         <i className={click ? "fas fa-times" : "fas fa-bars"} />
       </div>
       <ul className={click ? "nav-menu active" : "nav-menu"}>
+        <li className="nav-item">
+          <Link to="/shop" className="nav-links" 
+            onClick={closeMobileMenu}>
+          Shop
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/contact" className="nav-links" 
+            onClick={closeMobileMenu}>
+          Conatct
+          </Link>
+        </li>
       {currentUser ? (
         <li className="nav-item">
           <Link
@@ -74,7 +86,6 @@ const Navigation = () => {
           </Link>
         </li>
           )}
-        
         <li className="nav-item">
           <Link
             to="/services"
@@ -82,12 +93,6 @@ const Navigation = () => {
             onClick={closeMobileMenu}
           >
             Cart
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link to="shop" className="nav-links" 
-            onClick={closeMobileMenu}>
-          Shop
           </Link>
         </li>
       </ul>
