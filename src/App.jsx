@@ -6,6 +6,7 @@ import Navigation from "./components/navigation/Navigation";
 import Footer from "./components/footer/Footer";
 import SignIn from "./components/signInUP/SignIn";
 import SignUp from "./components/signInUP/SignUp";
+import Shop from "./components/shop/Shop.jsx";
 
 function App() {
   const location = useLocation();
@@ -22,6 +23,7 @@ function App() {
         />
         <Route exact path="/signUp" element={<SignUp />} />
         <Route exact path="/signIn" element={<SignIn />} />
+        <Route exact path="/shop" element={<Shop />} />
       </Routes>
       {location.pathname !== "/signUp" && location.pathname !== "/signIn" && <Footer />}
     </>
