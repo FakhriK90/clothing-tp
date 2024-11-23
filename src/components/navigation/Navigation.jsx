@@ -3,6 +3,8 @@ import { useEffect, useState, useContext } from "react";
 import {Link} from "react-router-dom";
 import {UserContext} from "../../contexts/user.context"
 import {signOutUser} from "../../utils/firebase/Firebase.utils"
+import CartIcon from "../cart-icon/CartIcon";
+import CartDropdown from "../cart-dropdown/CartDropdown";
 
 
 const Navigation = () => {
@@ -92,11 +94,12 @@ const Navigation = () => {
             className="nav-links"
             onClick={closeMobileMenu}
           >
-            Cart
+            <CartIcon/>
           </Link>
         </li>
       </ul>
     </div>
+    <CartDropdown/>
   </nav>
   )
 }
