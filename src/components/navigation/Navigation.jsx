@@ -92,7 +92,6 @@ const Navigation = () => {
           )}
         <li className="nav-item">
           <Link
-            to="/services"
             className="nav-links"
             onClick={closeMobileMenu}
           >
