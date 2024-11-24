@@ -2,6 +2,7 @@ import "./navigation.styles.scss";
 import { useEffect, useState, useContext } from "react";
 import {Link} from "react-router-dom";
 import {UserContext} from "../../contexts/user.context"
+import {CartContext} from "../../contexts/cart.context"
 import {signOutUser} from "../../utils/firebase/Firebase.utils"
 import CartIcon from "../cart-icon/CartIcon";
 import CartDropdown from "../cart-dropdown/CartDropdown";
@@ -9,6 +10,7 @@ import CartDropdown from "../cart-dropdown/CartDropdown";
 
 const Navigation = () => {
   const {currentUser} = useContext(UserContext);
+  const {isCartOpen} = useContext(CartContext);
 
   /* Setting scroll method */
   const [scrolled, setScrolled] = useState(false);
@@ -99,7 +101,7 @@ const Navigation = () => {
         </li>
       </ul>
     </div>
-    <CartDropdown/>
+    {isCartOpen && <CartDropdown/>}
   </nav>
   )
 }
