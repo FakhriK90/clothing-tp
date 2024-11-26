@@ -6,10 +6,14 @@ import CardContent from '@mui/joy/CardContent';
 import IconButton from '@mui/joy/IconButton';
 import Typography from '@mui/joy/Typography';
 import BookmarkAdd from '@mui/icons-material/BookmarkAddOutlined';
+import { useContext } from 'react';
+import { CartContext } from '../../contexts/cart.context';
 import './shop-item.styles.scss';
 
 const ShopItem = ({item}) => {
     const { name, imageUrl, price } = item;
+    const {addItemToCart} = useContext(CartContext);
+    const addProductToCart = () => addItemToCart(item);
     return (
         <div className='shop-item-page'>
         <Card sx={{ width: 320 }}>
@@ -42,6 +46,7 @@ const ShopItem = ({item}) => {
           aria-label="Explore Bahamas Islands"
           sx={{ ml: 'auto', alignSelf: 'center', fontWeight: 600 }}
           className="button2"
+          onClick={addProductToCart}
         >
           Shop now
         </Button>
