@@ -20,7 +20,7 @@ $background-color_2: transparent;
 	z-index: 999;
 }
 .navbar.scrolled {
-	background: linear-gradient(90deg, rgba(237, 237, 237, 0.607) 0%, rgba(255, 255, 255, 0.607) 100%);
+	background: linear-gradient(90deg, #fef3f3 0%, #ffffff 100%);
 	transition: background 0.3s ease-in-out;
 	.nav-links {
 		color: $color_1;
